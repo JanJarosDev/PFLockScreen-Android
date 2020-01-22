@@ -1,18 +1,12 @@
 package com.beautycoder.pflockscreen.fragments;
 
 import android.app.AlertDialog;
-
-import androidx.annotation.NonNull;
-import androidx.lifecycle.Observer;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.core.hardware.fingerprint.FingerprintManagerCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,6 +16,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.hardware.fingerprint.FingerprintManagerCompat;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 
 import com.beautycoder.pflockscreen.PFFLockScreenConfiguration;
 import com.beautycoder.pflockscreen.R;
@@ -307,8 +307,9 @@ public class PFLockScreenFragment extends Fragment {
         @Override
         public void onCodeCompleted(String code) {
             if (mIsCreateMode) {
-                mNextButton.setVisibility(View.VISIBLE);
+                //Notifying code created listener instead of showing next button
                 mCode = code;
+                mCodeCreateListener.onCodeCreated(code);
                 return;
             }
             mCode = code;
