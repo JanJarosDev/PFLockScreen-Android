@@ -415,7 +415,7 @@ public class PFLockScreenFragment extends Fragment {
         );
     }
 
-    private void errorAction() {
+    public void errorAction() {
         if (mConfiguration.isErrorVibration()) {
             final Vibrator v = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
             if (v != null) {
