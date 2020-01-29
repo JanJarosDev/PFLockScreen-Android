@@ -1,6 +1,7 @@
 package com.beautycoder.pflockscreen;
 
 import android.content.Context;
+
 import androidx.annotation.IntDef;
 
 import java.io.Serializable;
@@ -18,6 +19,7 @@ public class PFFLockScreenConfiguration implements Serializable {
     private boolean mUseFingerprint = false;
     private boolean mAutoShowFingerprint = false;
     private String mTitle = "";
+    private String mErrorText = "";
     private int mMode = MODE_AUTH;
     private int mCodeLength = 4;
     private boolean mClearCodeOnError = false;
@@ -32,6 +34,7 @@ public class PFFLockScreenConfiguration implements Serializable {
         mUseFingerprint = builder.mUseFingerprint;
         mAutoShowFingerprint = builder.mAutoShowFingerprint;
         mTitle = builder.mTitle;
+        mErrorText = builder.mErrorText;
         mMode = builder.mMode;
         mCodeLength = builder.mCodeLength;
         mClearCodeOnError = builder.mClearCodeOnError;
@@ -59,6 +62,10 @@ public class PFFLockScreenConfiguration implements Serializable {
 
     public String getTitle() {
         return mTitle;
+    }
+
+    public String getmErrorText() {
+        return mErrorText;
     }
 
     public int getCodeLength() {
@@ -97,6 +104,7 @@ public class PFFLockScreenConfiguration implements Serializable {
         private boolean mUseFingerprint = false;
         private boolean mAutoShowFingerprint = false;
         private String mTitle = "";
+        private String mErrorText = "";
         private int mMode = 0;
         private int mCodeLength = 4;
         private boolean mClearCodeOnError = false;
@@ -112,6 +120,11 @@ public class PFFLockScreenConfiguration implements Serializable {
 
         public Builder setTitle(String title) {
             mTitle = title;
+            return this;
+        }
+
+        public Builder setErrorText(String errorText) {
+            mErrorText = errorText;
             return this;
         }
 
@@ -180,7 +193,9 @@ public class PFFLockScreenConfiguration implements Serializable {
 
     @Retention(SOURCE)
     @IntDef({MODE_CREATE, MODE_AUTH})
-    public @interface PFLockScreenMode {}
+    public @interface PFLockScreenMode {
+    }
+
     public static final int MODE_CREATE = 0;
     public static final int MODE_AUTH = 1;
 

@@ -183,6 +183,7 @@ public class PFLockScreenFragment extends Fragment {
     private final View.OnClickListener mOnKeyClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            titleView.setText(mConfiguration.getTitle());
             if (v instanceof TextView) {
                 final String string = ((TextView) v).getText().toString();
                 if (string.length() != 1) {
@@ -416,6 +417,8 @@ public class PFLockScreenFragment extends Fragment {
     }
 
     public void errorAction() {
+        titleView.setText(mConfiguration.getmErrorText());
+        cleanCode();
         if (mConfiguration.isErrorVibration()) {
             final Vibrator v = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
             if (v != null) {
