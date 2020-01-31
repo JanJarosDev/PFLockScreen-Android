@@ -183,6 +183,8 @@ public class PFLockScreenFragment extends Fragment {
     private final View.OnClickListener mOnKeyClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            titleView.setTextColor(getResources().getColor(R.color.code_lock_screen_pf));
+            titleView.setBackgroundColor(getResources().getColor(R.color.transparent));
             titleView.setText(mConfiguration.getTitle());
             if (v instanceof TextView) {
                 final String string = ((TextView) v).getText().toString();
@@ -418,6 +420,8 @@ public class PFLockScreenFragment extends Fragment {
 
     public void errorAction() {
         titleView.setText(mConfiguration.getmErrorText());
+        titleView.setTextColor(getResources().getColor(R.color.warning_color));
+        titleView.setBackgroundColor(getResources().getColor(R.color.code_lock_screen_pf));
         cleanCode();
         if (mConfiguration.isErrorVibration()) {
             final Vibrator v = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
